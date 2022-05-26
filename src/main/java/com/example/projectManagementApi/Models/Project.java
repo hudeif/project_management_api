@@ -16,22 +16,21 @@ import java.util.List;
 @Getter
 @Setter
 public class Project {
-    @Column(name="project_id")
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="project_id")
+    private Integer id;
 
     private String projectName;
     private String description;
     private Timestamp starDate;
     private Timestamp endDate;
 
-    @ManyToOne
+    @OneToMany
     @JoinColumn(name="task_id")
     private List<Task> Tasks;
 
     @ManyToMany(mappedBy = "projects")
     private List<User> users;
-
 
 }
