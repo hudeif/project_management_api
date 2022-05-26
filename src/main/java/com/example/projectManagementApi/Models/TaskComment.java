@@ -20,12 +20,12 @@ public class TaskComment {
     private String body;
     private Timestamp date;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany
-    @JoinColumn(name = "project_id")
-    private Project project;
+    @ManyToOne
+    @JoinColumn(name = "task_id")
+    private Task task;
 
 }

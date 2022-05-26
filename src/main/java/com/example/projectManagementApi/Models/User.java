@@ -17,9 +17,9 @@ import java.util.Set;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
-    private int id;
+    private Integer id;
     private String firstName;
     private String lastName;
     private String email;
@@ -29,15 +29,16 @@ public class User {
     @JoinColumn(name="role_id")
     private UserRole userRole;
 
-    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    @JoinTable(name = "project_Users", joinColumns = @JoinColumn(name = "project_id",referencedColumnName = "project_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id",referencedColumnName = "user_id"))
-    private Set<Project> projects;
+    @ManyToMany(cascade = CascadeType.MERGE)
+    @JoinTable(name = "project_users",
+            joinColumns = @JoinColumn(name = "user_id",referencedColumnName = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "project_id",referencedColumnName ="project_id" ))
+    private List<Project> projects;
 
     @ManyToMany(mappedBy = "users")
     private List<Task> tasks;
 
-    @ManyToOne
+    @OneToMany
     @JoinColumn(name = "user_id")
     private List<TaskComment> comments;
 

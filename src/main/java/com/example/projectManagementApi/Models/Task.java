@@ -36,4 +36,8 @@ public class Task {
     joinColumns = @JoinColumn(name = "task_id",referencedColumnName = "task_id"),
     inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "user_id"))
     private List<User> users;
+
+    @OneToMany
+    @JoinColumn(name = "task_id")
+    private List<TaskComment> comments;
 }
