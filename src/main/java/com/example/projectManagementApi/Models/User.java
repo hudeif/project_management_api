@@ -1,5 +1,6 @@
 package com.example.projectManagementApi.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,6 +28,7 @@ public class User {
 
     @ManyToOne
     @JoinColumn(name="role_id")
+    @JsonIgnoreProperties(value = "users")
     private UserRole userRole;
 
     @ManyToMany(cascade = CascadeType.MERGE)
