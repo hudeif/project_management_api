@@ -37,6 +37,10 @@ public class User {
     @ManyToMany(mappedBy = "users")
     private List<Task> tasks;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private List<TaskComment> comments;
+
 }
 
 
