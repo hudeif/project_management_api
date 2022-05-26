@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -32,6 +33,9 @@ public class User {
     @JoinTable(name = "project_Users", joinColumns = @JoinColumn(name = "project_id",referencedColumnName = "project_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id",referencedColumnName = "user_id"))
     private Set<Project> projects;
+
+    @ManyToMany(mappedBy = "users")
+    private List<Task> tasks;
 
 }
 
