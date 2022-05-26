@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("role")
+@CrossOrigin(maxAge = 3600)
 public class UserRoleController {
     @Autowired
     IUserRole iUserRole;
