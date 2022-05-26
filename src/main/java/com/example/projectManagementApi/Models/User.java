@@ -14,6 +14,7 @@ import java.util.Set;
 @Getter
 @Setter
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "user_id")
@@ -31,6 +32,7 @@ public class User {
     @JoinTable(name = "project_Users", joinColumns = @JoinColumn(name = "project_id",referencedColumnName = "project_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id",referencedColumnName = "user_id"))
     private Set<Project> projects;
+
 }
 
 
