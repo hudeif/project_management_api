@@ -40,24 +40,26 @@ public class User {
     private List<Project> projects;
 
     @ManyToMany(mappedBy = "users")
-    @JsonIgnoreProperties(value = {"users","comments"})
+    @JsonIgnoreProperties(value = {"users","comments","timeSheets"})
     private List<Task> tasks;
 
     @OneToMany
     @JoinColumn(name = "user_id")
-    @JsonIgnoreProperties(value = {"user"})
     private List<TaskComment> comments;
 
 
     @ManyToMany(mappedBy = "users")
+    @JsonIgnoreProperties(value = "users")
     private List<Meeting> meetings;
 
     @OneToMany
     @JoinColumn(name = "user_id")
+    @JsonIgnoreProperties({"users"})
     private List<Note> notes;
 
     @OneToMany
     @JoinColumn(name = "user_id")
+    @JsonIgnoreProperties(value = "tasks")
     private List<TimeSheet> timeSheets;
 
 }
