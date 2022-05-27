@@ -28,6 +28,7 @@ public class TaskComment {
 
     @ManyToOne
     @JoinColumn(name = "task_id")
+    @JsonIgnoreProperties(value = {"users","comments"})
     private Task task;
 
 }

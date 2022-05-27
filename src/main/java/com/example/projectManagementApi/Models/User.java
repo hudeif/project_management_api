@@ -35,14 +35,21 @@ public class User {
     @JoinTable(name = "project_users",
             joinColumns = @JoinColumn(name = "user_id",referencedColumnName = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "project_id",referencedColumnName ="project_id" ))
+    @JsonIgnoreProperties(value = {"users","tasks"})
     private List<Project> projects;
 
     @ManyToMany(mappedBy = "users")
+    @JsonIgnoreProperties(value = {"users","comments"})
     private List<Task> tasks;
 
     @OneToMany
     @JoinColumn(name = "user_id")
+    @JsonIgnoreProperties(value = {"user"})
     private List<TaskComment> comments;
+
+
+    @ManyToMany(mappedBy = "users")
+    private List<Meeting> meetings;
 
 }
 
