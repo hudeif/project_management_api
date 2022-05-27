@@ -24,7 +24,7 @@ public class Task {
     private Integer id;
     private String title;
     private String description;
-    private Timestamp startinDate;
+    private Timestamp startingDate;
     private Timestamp endingDate;
     private String status;
     private String priority;
@@ -32,17 +32,25 @@ public class Task {
     @ManyToOne
     @JoinColumn(name = "project_id")
     @JsonIgnoreProperties(value = {"users","tasks"})
-    private Project project;
+    private Project projects;
 
     @ManyToMany(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
     @JoinTable(name = "task_users",
     joinColumns = @JoinColumn(name = "task_id",referencedColumnName = "task_id"),
     inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "user_id"))
-    @JsonIgnoreProperties(value = {"projects","tasks","comments","meetings"})
+    @JsonIgnoreProperties(value = {"projects","tasks","comments","meetings","timeSheets","notes"})
     private List<User> users;
 
     @OneToMany
     @JoinColumn(name = "task_id")
     @JsonIgnoreProperties(value = {"task"})
     private List<TaskComment> comments;
+
+    @OneToMany
+    @JoinColumn(name = "task_id")
+    private List<TimeSheet> timeSheets;
 }
+
+
+
+

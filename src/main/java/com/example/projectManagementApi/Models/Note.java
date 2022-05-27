@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.List;
 
 @Entity
@@ -14,15 +15,17 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Setter
-public class UserRole {
+public class Note {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "role_id")
     private Integer id;
-    private String roleName;
+    private String title;
+    private String body;
+    private Timestamp date;
 
-    @OneToMany
-    @JoinColumn(name = "role_id")
-    @JsonIgnoreProperties(value = {"userRole","projects","tasks","comments","meetings","notes","timeSheets"})
-    private List<User> users;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    @JsonIgnoreProperties(value = {"meetings","comments","tasks","projects","userRole","notes","timeSheets"})
+    private User user;
+
 }
