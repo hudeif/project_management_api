@@ -23,6 +23,6 @@ public class UserRole {
 
     @OneToMany
     @JoinColumn(name = "role_id")
-    @JsonIgnoreProperties(value = {"userRole","projects","tasks","comments"})
+    @JsonIgnoreProperties(value = {"userRole","projects","tasks","comments","meetings"})
     private List<User> users;
 }

@@ -38,7 +38,7 @@ public class Task {
     @JoinTable(name = "task_users",
     joinColumns = @JoinColumn(name = "task_id",referencedColumnName = "task_id"),
     inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "user_id"))
-    @JsonIgnoreProperties(value = {"projects","tasks","comments"})
+    @JsonIgnoreProperties(value = {"projects","tasks","comments","meetings"})
     private List<User> users;
 
     @OneToMany
