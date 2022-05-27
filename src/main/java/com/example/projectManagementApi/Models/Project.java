@@ -1,6 +1,7 @@
 package com.example.projectManagementApi.Models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,9 +29,11 @@ public class Project {
 
     @OneToMany
     @JoinColumn(name="task_id")
+    @JsonIgnoreProperties(value = {"project","users","comments"})
     private List<Task> Tasks;
 
     @ManyToMany(mappedBy = "projects")
+    @JsonIgnoreProperties(value = {"projects","tasks","comments"})
     private List<User> users;
 
 }
