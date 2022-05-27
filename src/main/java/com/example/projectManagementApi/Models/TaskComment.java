@@ -23,7 +23,7 @@ public class TaskComment {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    @JsonIgnoreProperties(value = {"projects","tasks","comments"})
+    @JsonIgnoreProperties(value = {"projects","tasks","comments","meetings"})
     private User user;
 
     @ManyToOne
