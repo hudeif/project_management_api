@@ -25,10 +25,10 @@ public class TimeSheet {
     @ManyToOne
     @JoinColumn(name = "user_id")
     @JsonIgnoreProperties(value = {"meetings","comments","tasks","projects","userRole","notes","timeSheets"})
-    private User user;
+    private User users;
 
     @ManyToOne
     @JoinColumn(name = "task_id")
     @JsonIgnoreProperties(value = {"projects","comments","users","timeSheets"})
-    private Task task;
+    private Task tasks;
 }

@@ -26,6 +26,6 @@ public class Note {
     @ManyToOne
     @JoinColumn(name = "user_id")
     @JsonIgnoreProperties(value = {"meetings","comments","tasks","projects","userRole","notes","timeSheets"})
-    private User user;
+    private User users;
 
 }
