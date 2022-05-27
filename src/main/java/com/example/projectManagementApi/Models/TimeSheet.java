@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.sql.Time;
 import java.sql.Timestamp;
 
 @Entity
@@ -14,21 +15,20 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @Getter
 @Setter
-public class TaskComment {
+public class TimeSheet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String body;
-    private Timestamp date;
+    private Timestamp startTime;
+    private Timestamp endTime;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    @JsonIgnoreProperties(value = {"projects","tasks","comments","meetings","notes","timeSheets"})
+    @JsonIgnoreProperties(value = {"meetings","comments","tasks","projects","userRole","notes","timeSheets"})
     private User user;
 
     @ManyToOne
     @JoinColumn(name = "task_id")
-    @JsonIgnoreProperties(value = {"users","comments","timeSheets","notes"})
+    @JsonIgnoreProperties(value = {"projects","comments","users","timeSheets"})
     private Task task;
-
 }

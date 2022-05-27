@@ -33,7 +33,7 @@ public class Project {
     private List<Task> Tasks;
 
     @ManyToMany(mappedBy = "projects")
-    @JsonIgnoreProperties(value = {"projects","tasks","comments","meetings"})
+    @JsonIgnoreProperties(value = {"projects","tasks","comments","meetings","timeSheets","notes"})
     private List<User> users;
 
 }

@@ -27,7 +27,7 @@ public class Meeting {
     @JoinTable(name = "meeting_users",
             joinColumns = @JoinColumn(name = "meeting_id",referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "user_id"))
-    @JsonIgnoreProperties(value = {"projects","tasks","comments","meetings"})
+    @JsonIgnoreProperties(value = {"projects","tasks","comments","meetings","notes","timeSheet"})
     private List<User> users;
 
 

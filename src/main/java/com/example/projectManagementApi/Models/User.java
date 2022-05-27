@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Set;
 
@@ -50,6 +51,14 @@ public class User {
 
     @ManyToMany(mappedBy = "users")
     private List<Meeting> meetings;
+
+    @OneToMany
+    @JoinColumn(name = "user_id")
+    private List<Note> notes;
+
+    @OneToMany
+    @JoinColumn(name = "user_id")
+    private List<TimeSheet> timeSheets;
 
 }
 
