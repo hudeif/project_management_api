@@ -1,5 +1,6 @@
 package com.example.projectManagementApi.Models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,7 +20,9 @@ public class TimeSheet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "Africa/Mogadishu")
     private Timestamp startTime;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "Africa/Mogadishu")
     private Timestamp endTime;
 
     @ManyToOne
