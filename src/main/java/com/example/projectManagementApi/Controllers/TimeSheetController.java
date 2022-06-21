@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("time_sheet")
+@CrossOrigin(maxAge = 3600)
 public class TimeSheetController {
     @Autowired
     ITimeSheet iTimeSheet;
