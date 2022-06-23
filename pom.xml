@@ -17,6 +17,8 @@
 		<java.version>17</java.version>
 		<maven.compiler.source>11</maven.compiler.source>
 		<maven.compiler.target>11</maven.compiler.target>
+<!--		<treblle.apiKey>oLis3zVHxnnqvp4s3pvhOvLSKiGC5Nw5></treblle.apiKey>-->
+<!--		<treblle.projectId>tgffNqrGkeNzQO6K></treblle.projectId>-->
 	</properties>
 	<dependencies>
 		<dependency>
@@ -48,6 +50,14 @@
 			<artifactId>hibernate-core</artifactId>
 			<version>5.6.9.Final</version>
 		</dependency>
+
+<!--		<dependency>-->
+<!--				<groupId>com.treblle</groupId>-->
+<!--				<artifactId>treblle-spring-boot-starter</artifactId>-->
+<!--				<version>1.0.0</version>-->
+<!--			</dependency>-->
+
+
 	</dependencies>
 
 	<build>
