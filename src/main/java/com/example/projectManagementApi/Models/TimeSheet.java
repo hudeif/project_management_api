@@ -20,9 +20,9 @@ public class TimeSheet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "Africa/Mogadishu")
+    @JsonFormat(shape=JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd HH:mm:ss",timezone = "Africa/Mogadishu")
     private Timestamp startTime;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "Africa/Mogadishu")
+    @JsonFormat(shape=JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd HH:mm:ss",timezone = "Africa/Mogadishu")
     private Timestamp endTime;
 
     @ManyToOne
