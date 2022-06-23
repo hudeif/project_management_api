@@ -28,8 +28,8 @@ public class Project {
     private Timestamp endDate;
 
     @OneToMany
-    @JoinColumn(name="task_id")
-    @JsonIgnoreProperties(value = {"project","users","comments"})
+    @JoinColumn(name="project_id")
+    @JsonIgnoreProperties(value = {"project","users"})
     private List<Task> Tasks;
 
     @ManyToMany(mappedBy = "projects")
