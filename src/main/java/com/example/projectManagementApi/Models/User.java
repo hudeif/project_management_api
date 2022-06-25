@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -32,16 +33,13 @@ public class User {
     @JsonIgnoreProperties(value = "users")
     private UserRole userRole;
 
-    @ManyToMany(cascade = CascadeType.MERGE)
-    @JoinTable(name = "project_users",
-            joinColumns = @JoinColumn(name = "user_id",referencedColumnName = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "project_id",referencedColumnName ="project_id" ))
+    @ManyToMany(mappedBy = "users")
     @JsonIgnoreProperties(value = {"users","tasks"})
-    private List<Project> projects;
+    private List<Project> projects = new ArrayList<>();
 
     @ManyToMany(mappedBy = "users")
     @JsonIgnoreProperties(value = {"users","comments","timeSheets"})
-    private List<Task> tasks;
+    private List<Task> tasks = new ArrayList<>();
 
     @OneToMany
     @JoinColumn(name = "user_id")
@@ -50,7 +48,7 @@ public class User {
 
     @ManyToMany(mappedBy = "users")
     @JsonIgnoreProperties(value = "users")
-    private List<Meeting> meetings;
+    private List<Meeting> meetings = new ArrayList<>();
 
     @OneToMany
     @JoinColumn(name = "user_id")

@@ -8,6 +8,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -20,15 +22,15 @@ public class Meeting {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String meetingTitle;
-    private Timestamp startingDate;
-    private Timestamp endingDate;
+    private LocalDate startingDate;
+    private LocalDate endingDate;
 
     @ManyToMany(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
     @JoinTable(name = "meeting_users",
             joinColumns = @JoinColumn(name = "meeting_id",referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "user_id"))
     @JsonIgnoreProperties(value = {"projects","tasks","comments","meetings","notes","timeSheet"})
-    private List<User> users;
+    private List<User> users = new ArrayList<>();
 
 
 }

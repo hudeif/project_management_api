@@ -9,6 +9,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -24,8 +26,8 @@ public class Task {
     private Integer id;
     private String title;
     private String description;
-    private Timestamp startingDate;
-    private Timestamp endingDate;
+    private LocalDate startingDate;
+    private LocalDate endingDate;
     private String status;
     private String priority;
 
@@ -39,7 +41,7 @@ public class Task {
     joinColumns = @JoinColumn(name = "task_id",referencedColumnName = "task_id"),
     inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "user_id"))
     @JsonIgnoreProperties(value = {"projects","tasks","comments","meetings","timeSheets","notes"})
-    private List<User> users;
+    private List<User> users = new ArrayList<>();
 
     @OneToMany
     @JoinColumn(name = "task_id")

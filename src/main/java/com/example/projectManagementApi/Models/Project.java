@@ -1,6 +1,7 @@
 package com.example.projectManagementApi.Models;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,6 +10,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -24,16 +26,21 @@ public class Project {
 
     private String projectName;
     private String description;
+    @JsonFormat(shape=JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd",timezone = "Africa/Mogadishu")
     private Timestamp starDate;
+    @JsonFormat(shape=JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd",timezone = "Africa/Mogadishu")
     private Timestamp endDate;
 
     @OneToMany
     @JoinColumn(name="project_id")
     @JsonIgnoreProperties(value = {"project","users"})
-    private List<Task> Tasks;
+    private List<Task> Tasks ;
 
-    @ManyToMany(mappedBy = "projects")
+    @ManyToMany(cascade = CascadeType.MERGE)
+    @JoinTable(name = "project_users",
+            joinColumns = @JoinColumn(name = "project_id",referencedColumnName = "project_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id",referencedColumnName ="user_id" ))
     @JsonIgnoreProperties(value = {"projects","tasks","comments","meetings","timeSheets","notes"})
-    private List<User> users;
+    private List<User> users = new ArrayList<>();
 
 }
