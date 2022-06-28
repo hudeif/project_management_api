@@ -27,7 +27,7 @@ public class Project {
     private String projectName;
     private String description;
     @JsonFormat(shape=JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd",timezone = "Africa/Mogadishu")
-    private Timestamp starDate;
+    private Timestamp startDate;
     @JsonFormat(shape=JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd",timezone = "Africa/Mogadishu")
     private Timestamp endDate;
 

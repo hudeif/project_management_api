@@ -18,6 +18,10 @@ public class ProjectController {
     @GetMapping("/list")
     public List<Project> getAll() {return iProject.findAll();}
 
+    @GetMapping("/{id}")
+    public Project getOne(@PathVariable Integer id) {return iProject.findById(id).get();}
+
+
     @PostMapping("/add")
     public Project add(@RequestBody ProjectRequest request) {
 
@@ -26,7 +30,7 @@ public class ProjectController {
         project.setId(request.id);
         project.setProjectName(request.projectName);
         project.setDescription(request.description);
-        project.setStarDate(request.startDate);
+        project.setStartDate(request.startDate);
         project.setEndDate(request.endDate);
         request.users.forEach(u -> {
             project.getUsers().add(u);
