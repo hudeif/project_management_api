@@ -1,5 +1,6 @@
 package com.example.projectManagementApi.Models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,8 +23,10 @@ public class Meeting {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String meetingTitle;
-    private LocalDate startingDate;
-    private LocalDate endingDate;
+    @JsonFormat(shape=JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd HH:mm:ss",timezone = "Africa/Mogadishu")
+    private Timestamp startingDate;
+    @JsonFormat(shape=JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd HH:mm:ss",timezone = "Africa/Mogadishu")
+    private Timestamp endingDate;
 
     @ManyToMany(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
     @JoinTable(name = "meeting_users",

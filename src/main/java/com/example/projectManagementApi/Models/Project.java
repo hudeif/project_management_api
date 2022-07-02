@@ -31,12 +31,12 @@ public class Project {
     @JsonFormat(shape=JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd",timezone = "Africa/Mogadishu")
     private Timestamp endDate;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.PERSIST)
     @JoinColumn(name="project_id")
-    @JsonIgnoreProperties(value = {"project","users"})
+    @JsonIgnoreProperties(value = {"project"})
     private List<Task> Tasks ;
 
-    @ManyToMany(cascade = CascadeType.MERGE)
+    @ManyToMany()
     @JoinTable(name = "project_users",
             joinColumns = @JoinColumn(name = "project_id",referencedColumnName = "project_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id",referencedColumnName ="user_id" ))

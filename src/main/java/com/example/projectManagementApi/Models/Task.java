@@ -31,21 +31,21 @@ public class Task {
     private String status;
     private String priority;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "project_id")
     @JsonIgnoreProperties(value = {"users","tasks"})
     private Project projects;
 
-    @ManyToMany(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "task_users",
     joinColumns = @JoinColumn(name = "task_id",referencedColumnName = "task_id"),
     inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "user_id"))
     @JsonIgnoreProperties(value = {"projects","tasks","comments","meetings","timeSheets","notes"})
     private List<User> users = new ArrayList<>();
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "task_id")
-    @JsonIgnoreProperties(value = {"task"})
+//    @JsonIgnoreProperties(value = {"task"})
     private List<TaskComment> comments;
 
     @OneToMany
