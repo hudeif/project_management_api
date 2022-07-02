@@ -18,10 +18,32 @@ public class UserController {
     public List<User> users (){return iUser.findAll();}
 
     @PostMapping("/add")
-    public User add(@RequestBody User user){ return iUser.save(user);}
+    public User add(@RequestBody User user){
+        User u;
+        if(user.getId() == null){
+             u =new User();
+        }else {
+         u = iUser.findById(user.getId()).get();
+        }
+        u.setId(user.getId());
+        u.setFirstName(user.getFirstName());
+        u.setLastName(user.getLastName());
+        u.setEmail(user.getEmail());
+        u.setUserRole(user.getUserRole());
+        return iUser.save(u);
+    }
 
     @PutMapping("/update")
-    public User update(@RequestBody User user ) {return iUser.save(user);}
+    public User update(@RequestBody User user ) {
+        User u = iUser.findById(user.getId()).get();
+        u.setId(user.getId());
+        u.setFirstName(user.getFirstName());
+        u.setLastName(user.getLastName());
+        u.setEmail(user.getEmail());
+        u.setUserRole(user.getUserRole());
+
+        return iUser.save(u);
+    }
 
     @DeleteMapping("/delete/{id}")
     public void delete(@PathVariable("id") Integer id) { iUser.deleteById(id);}

@@ -30,10 +30,12 @@ public class TaskController {
         task.setId(request.id);
         task.setDescription(request.description);
         task.setPriority(request.priority);
-        task.setStatus(request.status);
-        task.setStartingDate(request.startDate);
-        task.setEndingDate(request.endDate);
+        task.setStatus("pending");
+        task.setStartingDate(request.startingDate);
+        task.setEndingDate(request.endingDate);
         task.setProjects(request.projectId);
+        task.setComments(request.comments);
+        task.setTimeSheets(request.timeSheets);
         task.setTitle(request.title);
 
         request.users.forEach(t ->{
@@ -43,7 +45,23 @@ public class TaskController {
     }
 
     @PutMapping("/update")
-    public Task update(@RequestBody Task task){
+    public Task update(@RequestBody TaskRequest request)
+    {
+        Task task = new Task();
+        task.setId(request.id);
+        task.setDescription(request.description);
+        task.setPriority(request.priority);
+        task.setStatus(request.status);
+        task.setStartingDate(request.startingDate);
+        task.setEndingDate(request.endingDate);
+        task.setProjects(request.projectId);
+        task.setComments(request.comments);
+        task.setTimeSheets(request.timeSheets);
+        task.setTitle(request.title);
+
+        request.users.forEach(t ->{
+            task.getUsers().add(t);
+        });
         return iTask.save(task);
     }
 

@@ -24,8 +24,12 @@ public class ProjectController {
 
     @PostMapping("/add")
     public Project add(@RequestBody ProjectRequest request) {
-
-        Project project = new Project();
+        Project project;
+        if(request.id == null){
+            project = new Project();
+        }else {
+            project = new Project();
+        }
 
         project.setId(request.id);
         project.setProjectName(request.projectName);
