@@ -24,18 +24,20 @@ public class ProjectController {
 
     @PostMapping("/add")
     public Project add(@RequestBody ProjectRequest request) {
-        Project project;
-        if(request.id == null){
-            project = new Project();
-        }else {
-            project = iProject.findById(request.id).get();
-        }
+        Project project = new Project();
+//        if(request.id == null){
+//            project = new Project();
+//        }else {
+//            project = iProject.findById(request.id).get();
+//        }
 
         project.setId(request.id);
         project.setProjectName(request.projectName);
         project.setDescription(request.description);
         project.setStartDate(request.startDate);
         project.setEndDate(request.endDate);
+        project.setTasks(request.tasks);
+        project.setMeeting(request.meeting);
         request.users.forEach(u -> {
             project.getUsers().add(u);
         });

@@ -30,7 +30,7 @@ public class TaskController {
         task.setId(request.id);
         task.setDescription(request.description);
         task.setPriority(request.priority);
-        task.setStatus("pending");
+        task.setStatus("todo");
         task.setStartingDate(request.startingDate);
         task.setEndingDate(request.endingDate);
         task.setProjects(request.projectId);
