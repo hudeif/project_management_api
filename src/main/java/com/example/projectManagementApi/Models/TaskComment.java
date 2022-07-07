@@ -21,12 +21,12 @@ public class TaskComment {
     private String body;
     private Timestamp date;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
     @JoinColumn(name = "user_id")
     @JsonIgnoreProperties(value = {"projects","tasks","comments","meetings","notes","timeSheets"})
     private User user;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
     @JoinColumn(name = "task_id")
     @JsonIgnoreProperties(value = {"users","comments","timeSheets","notes"})
     private Task task;

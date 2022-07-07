@@ -31,12 +31,12 @@ public class Task {
     private String status;
     private String priority;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
     @JoinColumn(name = "project_id")
     @JsonIgnoreProperties(value = {"users","tasks"})
     private Project projects;
 
-    @ManyToMany(cascade = CascadeType.PERSIST)
+    @ManyToMany
     @JoinTable(name = "task_users",
     joinColumns = @JoinColumn(name = "task_id",referencedColumnName = "task_id"),
     inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "user_id"))

@@ -26,6 +26,7 @@ public class MeetingController {
         meeting.setMeetingTitle(Request.meetingTitle);
         meeting.setStartingDate(Request.startingDate);
         meeting.setEndingDate(Request.endingDate);
+        meeting.setProject(Request.project);
         Request.users.forEach(m ->{
             meeting.getUsers().add(m);
         });

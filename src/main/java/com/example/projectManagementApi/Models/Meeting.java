@@ -32,8 +32,14 @@ public class Meeting {
     @JoinTable(name = "meeting_users",
             joinColumns = @JoinColumn(name = "meeting_id",referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "user_id"))
-    @JsonIgnoreProperties(value = {"projects","tasks","comments","meetings","notes","timeSheet"})
+    @JsonIgnoreProperties(value = {"projects","tasks","comments","meetings","notes","timeSheets"})
     private List<User> users = new ArrayList<>();
+
+
+    @ManyToOne
+    @JoinColumn(name = "project_id")
+    @JsonIgnoreProperties(value = {"users","tasks","meeting"})
+    private Project project;
 
 
 }

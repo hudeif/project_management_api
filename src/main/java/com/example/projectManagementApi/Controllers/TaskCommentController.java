@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("task-comment")
+@CrossOrigin(maxAge = 3600)
 public class TaskCommentController {
     @Autowired
     ITaskComment iTaskComment;

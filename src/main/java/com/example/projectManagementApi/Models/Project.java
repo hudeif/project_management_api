@@ -31,10 +31,15 @@ public class Project {
     @JsonFormat(shape=JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd",timezone = "Africa/Mogadishu")
     private Timestamp endDate;
 
-    @OneToMany(cascade = CascadeType.PERSIST)
+    @OneToMany
     @JoinColumn(name="project_id")
     @JsonIgnoreProperties(value = {"project"})
     private List<Task> Tasks ;
+
+    @OneToMany
+    @JoinColumn(name="project_id")
+    @JsonIgnoreProperties(value = {"project"})
+    private List<Meeting> Meeting ;
 
     @ManyToMany()
     @JoinTable(name = "project_users",

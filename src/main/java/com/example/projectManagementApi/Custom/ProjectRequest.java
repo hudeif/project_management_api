@@ -1,5 +1,7 @@
 package com.example.projectManagementApi.Custom;
 
+import com.example.projectManagementApi.Models.Meeting;
+import com.example.projectManagementApi.Models.Task;
 import com.example.projectManagementApi.Models.User;
 
 import java.sql.Timestamp;
@@ -12,5 +14,7 @@ public class ProjectRequest {
     public String description;
     public Timestamp startDate;
     public Timestamp endDate;
+    public List<Task> tasks;
+    public List<Meeting> meeting;
     public List<User> users = new ArrayList<>();
 }
