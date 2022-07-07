@@ -28,7 +28,7 @@ public class ProjectController {
         if(request.id == null){
             project = new Project();
         }else {
-            project = new Project();
+            project = iProject.findById(request.id).get();
         }
 
         project.setId(request.id);

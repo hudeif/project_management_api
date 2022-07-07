@@ -5,7 +5,9 @@ import com.example.projectManagementApi.Models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @CrossOrigin(maxAge = 3600)
@@ -13,6 +15,19 @@ import java.util.List;
 public class UserController {
     @Autowired
     IUser iUser;
+
+    @PostMapping("/check")
+    public Map<String,Object> check(@RequestBody User user){
+        Map<String,Object> response = new HashMap<>();
+        User u = iUser.checkUser(user.getEmail(),user.getPassword());
+        if(u != null){
+            response.put("text","success");
+            response.put("user",u);
+        }else {
+            response.put("text","not found!");
+        }
+        return response;
+    }
 
     @GetMapping("/list")
     public List<User> users (){return iUser.findAll();}
