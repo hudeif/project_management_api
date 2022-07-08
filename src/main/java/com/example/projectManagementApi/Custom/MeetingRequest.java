@@ -18,6 +18,8 @@ public class MeetingRequest {
     @JsonFormat(shape=JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd HH:mm:ss",timezone = "Africa/Mogadishu")
     public Timestamp endingDate;
     public String status;
+    public String agenda;
+    public String discussionResult;
     public Project project;
     public List<User> users = new ArrayList<>();
 

@@ -27,7 +27,8 @@ public class Meeting {
     private Timestamp startingDate;
     @JsonFormat(shape=JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd HH:mm:ss",timezone = "Africa/Mogadishu")
     private Timestamp endingDate;
-
+    private String agenda;
+    private String discussionResult;
     @ManyToMany(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
     @JoinTable(name = "meeting_users",
             joinColumns = @JoinColumn(name = "meeting_id",referencedColumnName = "id"),

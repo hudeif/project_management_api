@@ -21,6 +21,7 @@ public class UserRole {
     private Integer id;
     private String roleName;
 
+
     @OneToMany
     @JoinColumn(name = "role_id")
     @JsonIgnoreProperties(value = {"userRole","projects","tasks","comments","meetings","notes","timeSheets"})
