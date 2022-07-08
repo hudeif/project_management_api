@@ -33,7 +33,7 @@ public class Meeting {
     @JoinTable(name = "meeting_users",
             joinColumns = @JoinColumn(name = "meeting_id",referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "user_id"))
-    @JsonIgnoreProperties(value = {"projects","tasks","comments","meetings","notes","timeSheets"})
+    @JsonIgnoreProperties(value = {"projects","tasks","meetings","notes"},allowSetters = true)
     private List<User> users = new ArrayList<>();
 
 

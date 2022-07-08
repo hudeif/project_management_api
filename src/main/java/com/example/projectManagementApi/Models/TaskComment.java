@@ -1,5 +1,6 @@
 package com.example.projectManagementApi.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,7 +29,7 @@ public class TaskComment {
 
     @ManyToOne
     @JoinColumn(name = "task_id")
-    @JsonIgnoreProperties(value = {"users","comments","timeSheets","notes"})
+    @JsonIgnoreProperties(value = {"users","comments","timeSheets","notes","projects"})
     private Task task;
 
 }

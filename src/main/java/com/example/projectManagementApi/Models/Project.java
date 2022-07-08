@@ -38,7 +38,7 @@ public class Project {
 
     @OneToMany
     @JoinColumn(name="project_id")
-    @JsonIgnoreProperties(value = {"project"})
+    @JsonIgnoreProperties(value = {"project"},allowSetters = true)
     private List<Meeting> Meeting ;
 
     @ManyToMany()
