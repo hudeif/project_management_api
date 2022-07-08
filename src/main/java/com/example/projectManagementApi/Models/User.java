@@ -47,7 +47,7 @@ public class User {
 
 
     @ManyToMany(mappedBy = "users")
-    @JsonIgnoreProperties(value = "users")
+    @JsonIgnoreProperties(value = "users",allowSetters = true)
     private List<Meeting> meetings = new ArrayList<>();
 
     @OneToMany
