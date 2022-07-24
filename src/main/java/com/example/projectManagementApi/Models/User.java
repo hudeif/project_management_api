@@ -25,8 +25,8 @@ public class User {
     private Integer id;
     private String firstName;
     private String lastName;
-    private String email = "admin@gmail.com";
-    private String password = "1234";
+    private String email;
+    private String password;
 
     @ManyToOne
     @JoinColumn(name="role_id")
