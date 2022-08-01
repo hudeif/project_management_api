@@ -29,6 +29,10 @@ public class UserController {
         return response;
     }
 
+    @GetMapping("/{userid}/{status}")
+    public void changeStatus(@PathVariable String userid,@PathVariable String status){
+        iUser.updateUserStatus(userid,status);
+    }
     @GetMapping("/list")
     public List<User> users (){return iUser.findAll();}
 
@@ -44,6 +48,7 @@ public class UserController {
         u.setFirstName(user.getFirstName());
         u.setLastName(user.getLastName());
         u.setEmail(user.getEmail());
+        u.setPassword(u.getPassword());
         u.setUserRole(user.getUserRole());
         return iUser.save(u);
     }
