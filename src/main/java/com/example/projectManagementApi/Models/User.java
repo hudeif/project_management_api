@@ -60,6 +60,8 @@ public class User {
     @JsonIgnoreProperties(value = "tasks")
     private List<TimeSheet> timeSheets;
 
+    private String status="offline";
+
 }
 
 
