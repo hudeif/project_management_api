@@ -3,6 +3,7 @@ package com.example.projectManagementApi.Controllers;
 import com.example.projectManagementApi.Custom.MeetingRequest;
 import com.example.projectManagementApi.Interfaces.IMeeting;
 import com.example.projectManagementApi.Models.Meeting;
+import com.example.projectManagementApi.Models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +22,7 @@ public class MeetingController {
 
     @PostMapping("/add")
     public Meeting add(@RequestBody MeetingRequest Request) {
-        Meeting meeting = new Meeting();
+        Meeting meeting =new Meeting();
         meeting.setId(Request.id);
         meeting.setMeetingTitle(Request.meetingTitle);
         meeting.setStartingDate(Request.startingDate);

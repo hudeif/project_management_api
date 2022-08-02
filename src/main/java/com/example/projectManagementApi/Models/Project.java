@@ -45,7 +45,7 @@ public class Project {
     @JoinTable(name = "project_users",
             joinColumns = @JoinColumn(name = "project_id",referencedColumnName = "project_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id",referencedColumnName ="user_id" ))
-    @JsonIgnoreProperties(value = {"projects","tasks","comments","meetings","timeSheets","notes"})
+    @JsonIgnoreProperties(value = {"projects","tasks","comments","timeSheets","notes"})
     private List<User> users = new ArrayList<>();
 
 }
