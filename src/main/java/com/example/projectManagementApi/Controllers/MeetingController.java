@@ -19,7 +19,7 @@ public class MeetingController {
 
     @GetMapping("/list")
     public List<Meeting> getAll() {return iMeeting.findAll();}
-
+//comment
     @PostMapping("/add")
     public Meeting add(@RequestBody MeetingRequest Request) {
         Meeting meeting =new Meeting();
