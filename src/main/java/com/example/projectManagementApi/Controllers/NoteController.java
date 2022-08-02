@@ -15,6 +15,7 @@ public class NoteController {
     @Autowired
     INote iNote;
 
+
     @GetMapping("/list")
     public List<Note> getAll() {return iNote.findAll();}
 
