@@ -48,7 +48,7 @@ public class UserController {
         u.setFirstName(user.getFirstName());
         u.setLastName(user.getLastName());
         u.setEmail(user.getEmail());
-        u.setPassword(u.getPassword());
+        u.setPassword(user.getPassword());
         u.setUserRole(user.getUserRole());
         return iUser.save(u);
     }
