@@ -3,11 +3,13 @@ package com.example.projectManagementApi.Controllers;
 import com.example.projectManagementApi.Interfaces.IUser;
 import com.example.projectManagementApi.Models.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @CrossOrigin(maxAge = 3600)
@@ -16,14 +18,29 @@ public class UserController {
     @Autowired
     IUser iUser;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @PostMapping("/check")
     public Map<String,Object> check(@RequestBody User user){
         Map<String,Object> response = new HashMap<>();
-        User u = iUser.checkUser(user.getEmail(),user.getPassword());
-        if(u != null){
-            response.put("text","success");
-            response.put("user",u);
-        }else {
+        
+        // First try to find user by email only
+        Optional<User> optionalUser = iUser.findAll().stream()
+            .filter(u -> u.getEmail().equals(user.getEmail()))
+            .findFirst();
+        
+        if(optionalUser.isPresent()) {
+            User u = optionalUser.get();
+            // Check if password matches (handle both BCrypt and plain text)
+            if(passwordEncoder.matches(user.getPassword(), u.getPassword()) || 
+               user.getPassword().equals(u.getPassword())) {
+                response.put("text","success");
+                response.put("user",u);
+            } else {
+                response.put("text","wrong password");
+            }
+        } else {
             response.put("text","not found!");
         }
         return response;
